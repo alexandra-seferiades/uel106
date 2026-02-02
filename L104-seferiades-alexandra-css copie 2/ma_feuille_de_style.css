@@ -1,0 +1,784 @@
+récent
+/* ==========================
+   Importation des polices
+========================== */
+@font-face {
+  font-family: 'FiraSans';
+  src: url('FiraSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Japan Wave';
+  src: url('Japan wave.ttf') format('truetype');
+}
+
+/* Police globale et resets */
+* {
+  font-family: 'FiraSans', sans-serif;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+/* ----- HEADER FIXED ----- */
+header {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background: white;
+  padding: 0.625rem 0 0.3125rem 0;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  height: 8rem;
+}
+
+main {
+  padding-top: 6.25rem;
+  margin-top: 40px;
+}
+
+
+/* Media queries pour le dézoom global du temple */
+@media (max-width: 50rem) {
+  .temple-scene {
+    transform: scale(0.9);
+  }
+
+  #video-header video {
+    height: 3.5rem;
+  }
+
+  header {
+    width: 100%; 
+    margin: 0 auto;
+  }
+  .logo a {
+    margin-top: 0.625rem;
+    font-size: 1.2rem;
+  }
+  nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  nav a {
+    font-size: 0.9rem;
+  }
+  .hero, .sections-ligne {
+    margin-top: 4rem;
+  }
+}
+
+
+/* Logo bouton doré */
+.logo a {
+  font-family: 'Japan Wave', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none !important;
+  display: inline-block;
+  margin-top: 0.3125rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: 1.25rem;
+  background-color: #D6A867;
+  box-shadow: 0 0.3125rem 1.125rem rgba(214,168,103,0.4);
+  transition: background 0.3s, color 0.3s;
+}
+
+.logo a:hover {
+  background-color: #EC635D;
+  color: #ffffff;
+  box-shadow: 0 0.375rem 1.375rem rgba(236,99,93,0.6);
+}
+
+/* Navigation principale */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5625rem;
+  background: transparent;
+}
+
+nav a {
+  color: #FFFFFF;
+  font-weight: 500;
+  text-decoration: none !important;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #EC625E;
+}
+
+/* Titres et Logo */
+h1, h2, h3 {
+  font-family: 'Japan Wave', sans-serif;
+  margin-bottom: 1.25rem;
+  text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(214,168,103,0.2);
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+  border-bottom: 0.3125rem solid #EC635D;
+  border-radius: 0 0 0.875rem 0.875rem;
+  padding-bottom: 0.5rem;
+  width: fit-content;
+  margin: 1.875rem auto 1.25rem;
+  color: #000000;
+}
+
+.hero h1::after {
+  content: none;
+}
+
+h2 {
+  color: #EC635D;
+  text-align: left;
+  font-size: 2rem;
+  border-left: 0.5rem solid #D6A867;
+  padding-left: 1rem;
+  margin-top: 2.25rem;
+}
+
+h3 {
+  color: #D6A867;
+  text-align: left;
+  font-size: 1.6rem;
+  border-left: 0.3125rem solid #000000;
+  padding-left: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+#posts h3 {
+  font-family: 'Japan Wave', sans-serif !important;
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+#posts h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#posts h3 a:hover {
+  color: #EC625E;
+}
+
+/* ==========================
+   Hero
+========================== */
+.hero p {
+  margin-top: -0.9375rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  font-size: 1.4rem;
+  border-top: none;
+  box-shadow: none;
+}
+
+/* Paragraphes normaux */
+p {
+  background: transparent;
+  border-left: 0.25rem solid #D6A867;
+  border-radius: 0 1rem 1rem 0;
+  padding: 0.875rem 1.25rem 0.875rem 1.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.75;
+  font-weight: 400;
+  text-align: justify;
+  box-shadow: 0 0.125rem 0.5rem rgba(214,168,103,0.05);
+  text-indent: 0;
+}
+
+/* Paragraphes avec alinéa spécifique */
+.alinea {
+  text-indent: 2%;
+}
+
+/* Sections générales */
+section {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #000000;
+  border-radius: 1rem;
+  padding: 2rem 1.75rem;
+  margin: 2.5rem auto;
+  max-width: 56.25rem;
+  box-shadow: 0 0.5rem 1.75rem rgba(0,0,0,0.1);
+  border-top: 0.1875rem solid #D6A867;
+  border-bottom: 0.125rem solid #EC635D;
+}
+
+/* Conteneur de boîtes */
+.conteneur-boites {
+  display: flex;
+  gap: 1.875rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2.5rem 0;
+  padding: 1.25rem;
+}
+
+.conteneur-boites section {
+  flex: 1;
+  border: 1px solid #D6A867;
+  border-radius: 0.625rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1.25rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+}
+
+.conteneur-boites section p {
+  margin-bottom: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* Sections sur l’index côte à côte */
+.sections-ligne {
+  display: flex;
+  gap: 1.875rem;
+  justify-content: center;
+  margin: 1.25rem auto;
+  padding: 1.25rem;
+  max-width: 75rem;
+  margin-top: 3.125rem;
+}
+
+.sections-ligne section:not(.bloc-temple) {
+  flex: 1;
+  border: 1px solid #D6A867;
+  border-radius: 0.625rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 1.25rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+  min-width: 21.875rem;
+}
+
+/* Pilier gauche/droit du temple */
+.sections-ligne .bloc-temple {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: #000000 !important;
+  border-radius: 0 0 1rem 1rem !important;
+  padding: 1.25rem !important;
+  margin: 4.375rem auto 0 !important;
+  max-width: none !important;
+  box-shadow: 0 0.5rem 1.125rem rgba(0,0,0,0.1) !important;
+  border-top: none !important;
+  border-left: 0.375rem solid #D6A867 !important;
+  border-right: 0.375rem solid #D6A867 !important;
+  border-bottom: none !important;
+  flex: 1;
+  min-width: 0;
+}
+
+.sections-ligne #posts.bloc-temple {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: #000000 !important;
+  border-radius: 0 0 1rem 1rem !important;
+  padding: 1.25rem !important;
+  margin: 4.375rem auto 0 !important;
+  max-width: none !important;
+  box-shadow: 0 0.5rem 1.125rem rgba(0,0,0,0.1) !important;
+  border-top: none !important;
+  border-left: 0.375rem solid #D6A867 !important;
+  border-right: 0.375rem solid #D6A867 !important;
+  border-bottom: none !important;
+}
+
+ol, ol li, ol h3 {
+  font-family: 'Japan Wave', sans-serif !important;
+}
+
+/* Details / Summary */
+details summary {
+  cursor: pointer;
+  color: #000000;
+  font-weight: 600;
+  padding: 0.625rem 1.125rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.75rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.1);
+  margin-bottom: 0.75rem;
+}
+
+/* Tableaux */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  border: 0.125rem solid #D6A867;
+  box-shadow: 0 0.25rem 0.9375rem rgba(0,0,0,0.1);
+  margin: 1.5625rem 0;
+  color: #000000;
+  font-weight: 500;
+}
+
+th, td {
+  padding: 0.875rem 1.125rem;
+  border: 1px solid #D6A867;
+  text-align: left;
+  background: rgba(214,168,103,0.12);
+}
+
+th {
+  background-color: #D6A867;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(214,168,103,0.08);
+}
+
+table th:first-child { border-top-left-radius: 1rem; }
+table th:last-child { border-top-right-radius: 1rem; }
+table tr:last-child td:first-child { border-bottom-left-radius: 1rem; }
+table tr:last-child td:last-child { border-bottom-right-radius: 1rem; }
+
+/* Boutons */
+.article-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 1.875rem;
+}
+
+.article-buttons a, .article-buttons button {
+  background: #D6A867;
+  color: #000000;
+  border: none;
+  border-radius: 1.25rem;
+  padding: 0.75rem 1.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0.3125rem 1.125rem rgba(214,168,103,0.4);
+  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none !important;
+}
+
+.article-buttons a:hover, .article-buttons button:hover {
+  background: #EC635D;
+  color: #ffffff;
+  box-shadow: 0 0.375rem 1.375rem rgba(236,99,93,0.6);
+}
+
+/* Footer */
+footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 1.25rem 1.875rem 0.625rem 1.875rem;
+  width: 100%;
+}
+
+#contact {
+  background-color: #ffffff;
+  text-align: left;
+  margin-bottom: 1.5625rem;
+  border-radius: 1rem;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 0.5rem 1.75rem rgba(0,0,0,0.1);
+  border-top: 0.1875rem solid #D6A867;
+  border-bottom: 0.125rem solid #EC635D;
+}
+
+#contact h2 {
+  text-align: center;
+  width: 100%;
+  border-left: none;
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
+}
+
+#contact p { margin: 0.3125rem 0; }
+
+/* Footer bottom */
+#footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  border-top: 1px solid #D6A867;
+  padding-top: 0.9375rem;
+  padding-bottom: 0.625rem;
+}
+
+footer .copyright {
+  color: #ffffff;
+  white-space: nowrap;
+  margin-left: auto;
+  margin-bottom: 0;
+}
+
+#liens-footer {
+  list-style: none;
+  display: flex;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0 0 0.3125rem 0;
+  flex-wrap: wrap;
+}
+
+#liens-footer li { display: inline; }
+
+#liens-footer a {
+  color: #ffffff;
+  text-decoration: none !important;
+  transition: color 0.3s ease;
+}
+
+#liens-footer a:hover {
+  color: #EC625E;
+}
+
+/* Page informations légales : enlever puces */
+#informationslegales ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Liens soulignés dans les paragraphes : rouge-rose au survol */
+p a {
+  text-decoration: underline;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+p a:hover {
+  color: #EC625E;
+}
+
+/* Code / Pre */
+code, pre {
+  background-color: #f9f5ef;
+  color: #EC635D;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1rem;
+  font-size: 1.1rem;
+  box-shadow: 0 0.25rem 1.125rem rgba(214,168,103,0.4);
+  margin: 1.125rem 0;
+  display: block;
+  overflow-x: auto;
+}
+
+/* Responsive */
+@media (max-width: 50rem) {
+  section { padding: 1.75rem 1.25rem; }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.6rem; padding-left: 0.875rem; }
+  h3 { font-size: 1.3rem; padding-left: 0.75rem; }
+  p, .alinea { padding: 0.875rem 1rem 0.875rem 1.375rem; }
+  aside a, aside button, .article-buttons a, .article-buttons button,
+  .fin-article3 a, .fin-article3 button { margin: 0.625rem; padding: 0.625rem 1.5rem; font-size: 1rem; }
+  .sections-ligne { flex-direction: column; }
+}
+
+@media (max-width: 37.5rem) {
+  #footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9375rem;
+  }
+  #liens-footer { justify-content: center; }
+  footer .copyright { margin-left: 0; }
+}
+
+/* ---------- Temple (page d'accueil) ---------- */
+.temple-scene {
+  position: relative;
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  transform-origin: top center;
+}
+
+.temple-layout {
+  position: relative;
+  align-items: stretch;
+}
+
+/* Grande toiture commune au-dessus des deux blocs */
+.temple-layout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -5%;
+  right: -5%;
+  height: 1.875rem;
+  background: linear-gradient(to bottom, #EC635D, #D6A867);
+  border-radius: 1.125rem 1.125rem 0.5rem 0.5rem;
+  box-shadow: 0 0.375rem 1.125rem rgba(0,0,0,0.18);
+  z-index: 1;
+}
+
+.temple-layout::after {
+  content: "";
+  position: absolute;
+  top: 2.125rem;
+  left: -1.25%;
+  right: -1.25%;
+  height: 0.5rem;
+  background-color: #000000;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.1875rem 0.625rem rgba(0,0,0,0.25);
+  z-index: 2;
+}
+
+/* Décaler légèrement les titres comme “panneaux” */
+.bloc-temple h2 {
+  text-align: center;
+  border-left: none;
+  margin-top: 0.625rem;
+}
+
+/* ---------- Sections en forme de torii ---------- */
+section.torii {
+  position: relative;
+  border-radius: 0 0 1rem 1rem;
+  border-top: none;
+  border-left: 0.375rem solid #EC635D;
+  border-right: 0.375rem solid #EC635D;
+  border-bottom: none;
+  margin-top: 4.375rem;
+  box-shadow: 0 0.5rem 1.125rem rgba(0,0,0,0.1);
+}
+
+section.torii::before {
+  content: "";
+  position: absolute;
+  top: -2.5rem;
+  left: -6.25%;
+  right: -6.25%;
+  height: 1rem;
+  background: #EC635D;
+  border-radius: 1.375rem 1.375rem 0.625rem 0.625rem;
+  box-shadow: 0 0.25rem 0.875rem rgba(0,0,0,0.25);
+}
+
+section.torii::after {
+  content: "";
+  position: absolute;
+  top: -1.25rem;
+  left: -3.125%;
+  right: -3.125%;
+  height: 0.4375rem;
+  background: #000000;
+  border-radius: 0.4375rem;
+  box-shadow: 0 0.1875rem 0.625rem rgba(0,0,0,0.25);
+}
+
+section.torii::before, section.torii::after {
+  z-index: 1;
+}
+
+/* Pour une base plus réaliste, pseudo-base */
+section.torii::before {
+  z-index: 2;
+}
+
+section.torii::after {
+  z-index: 3;
+}
+
+/* Ombre sous la section pour la base du torii */
+section.torii {
+  box-shadow: 0 0.5rem 1.125rem rgba(0,0,0,0.1);
+}
+
+/* Voir qu'un seul torii, que sur la page UE L102 */
+.articles-ue-l102 section.torii {
+  display: none;
+}
+.articles-ue-l102 section.torii:target {
+  display: block;
+}
+
+/* Navigation articles UE L102 */
+.article-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9375rem;
+  margin: 1.25rem 0;
+}
+
+.article-nav a {
+  background: #D6A867;
+  color: #000000;
+  border: none;
+  border-radius: 1.25rem;
+  padding: 0.75rem 1.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0.3125rem 1.125rem rgba(214,168,103,0.4);
+  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.article-nav a:hover {
+  background: #EC635D;
+  color: #ffffff;
+  box-shadow: 0 0.375rem 1.375rem rgba(236,99,93,0.6);
+}
+
+/* ===============
+Images et vidéos 
+================ */
+
+/* Imgage de l'accueil et de l'UE L102*/
+.image-center {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 0.25rem 1.125rem rgba(214,168,103,0.4);
+  max-width: 100%;
+  height: auto;
+}
+
+.image-center img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  margin: 0 auto;
+}
+
+.image-avec-bords-arrondis {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 0.25rem 1.125rem rgba(214,168,103,0.4);
+  display: block;
+  margin: 0 auto;
+}
+
+.image-with-logo {
+  position: relative;
+}
+
+.logo-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 150px; /* Taille max du logo */
+  width: 20%; /* Largeur relative */
+  height: auto;
+  z-index: 2;
+}
+
+
+/* Vidéo header */
+
+
+#video-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+#video-header video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 70%;
+  z-index: -1;
+}
+
+
+/* Vidéo CAWEB de l'article 2 */
+.torii-video-container {
+  width: 80%; /* ou 100% selon la largeur voulue */
+  margin: 0 auto; /* centrage horizontal */
+  aspect-ratio: 16 / 9; /* maintient le ratio 16:9 */
+  position: relative;
+}
+
+.torii-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* Vidéo avant le footer */
+#footer-container {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+#video-au-dessus-footer {
+  width: 100%;
+  height: 120px; /* Ajuste la hauteur selon ton besoin */
+  overflow: hidden;
+}
+
+#video-au-dessus-footer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+@media (max-width: 37.5rem) {
+  .temple-scene {
+    transform: scale(0.75);
+  }
+  #video-header video {
+    height: auto;
+  }
+}
+
+
+/* Pour pas qu'il y ait une zone blanche en dessous du footer (tablette) + body prend toute la largeur et la hauteur */
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
