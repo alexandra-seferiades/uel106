@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes projets - Alexandra Seferiades</title>
+    <link rel="stylesheet" href="feuille_de_style_portfolio.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">AS</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="projets.html" class="nav-link active">Projets</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>MES PROJETS</h1>
+                <h2>Travaux DEUST Webmaster et Métiers de l'Internet</h2>
+            </div>
+        </section>
+
+        <div class="unsplash-credit">
+            Photo by <a href="https://unsplash.com/photos/pathway-in-between-forest-during-day--4pA83nGCR8?utm_source=portfolio&utm_medium=referral" target="_blank">Masaaki Komori</a> 
+            on <a href="https://unsplash.com/?utm_source=portfolio&utm_medium=referral" target="_blank">Unsplash</a>
+        </div>
+
+        <section class="projects-section">
+            <div class="project">
+                <h3>Portfolio - UE L102 (Wix)</h3>
+                <p>Création d’un site vitrine personnel avec l’outil Wix, intégrant design, navigation claire et présentation du profil professionnel.</p>
+                <p><em>Outil : Wix • Projet d’introduction à la mise en ligne et à la communication web.</em></p>
+                <a href="https://alexandraseferiade.wixsite.com/monportfolio" class="btn btn-primary" target="_blank">Voir le site →</a>
+            </div>
+
+            <div class="project">
+                <h3>Mini-site - UE L104</h3>
+                <p>Réalisation d’un mini-site HTML/CSS complet. Ce travail met l’accent sur la structure, la mise en page, et la sémantique du code.</p>
+                <p><em>Hébergement : Serveur universitaire (UNILIM) • Projet front-end.</em></p>
+                <a href="https://seferiades1.hosting.unilim.fr/uel106/minisite/index.html" class="btn btn-primary" target="_blank">Voir le site →</a>
+            </div>
+
+            <div class="project">
+                <h3>CV</h3>
+                <p>Version en ligne de mon CV comprenant mes compétences, mon parcours académique et mes expériences web. Accessible directement depuis ce portfolio.</p>
+                <p><em>Hébergement : GitHub Pages • Projet personnel évolutif.</em></p>
+                <a href="https://raw.githubusercontent.com/alexandra-seferiades/uel106/main/L104-seferiades-alexandra-css%20copie%202/cv_alexandra_seferiades.pdf
+" class="btn btn-primary" target="_blank" download>Télécharger CV PDF →</a>
+            </div>
+        </section>
+
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,120V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120Z"/>
+            </svg>
+        </div>
+    </main>
+
+    <footer>
+        <p>Alexandra Seferiades © 2026 - Portfolio DEUST Webmaster</p>
+    </footer>
+
+    <script>
+    async function traduirePortfolio() {
+        const DEEPL_KEY = 'a39040d4-660c-4e69-becc-b26d83c3be39:fx';
+        
+        const texte = document.querySelector('h1').textContent + '\\n' + 
+                      document.querySelector('h2').textContent;
+        
+        const reponse = await fetch('https://api-free.deepl.com/v2/translate', {
+            method: 'POST',
+            headers: {
+                'Authorization': `DeepL-Auth-Key ${DEEPL_KEY}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                'text': texte,
+                'source_lang': 'FR',
+                'target_lang': 'JA'
+            })
+        });
+        
+        const data = await reponse.json();
+        document.querySelector('h1').textContent = data.translations[0].text.split('\\n')[0];
+        document.querySelector('h2').textContent = data.translations[1]?.text || 'Web Developer';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelector('.nav-links');
+        const boutonTrad = document.createElement('a');
+        boutonTrad.href = 'javascript:void(0)';
+        boutonTrad.className = 'nav-link translate-link';
+        boutonTrad.textContent = 'Translate to Japanese';
+        boutonTrad.onclick = traduirePortfolio;
+        
+        navLinks.insertBefore(boutonTrad, navLinks.firstChild);
+    });
+    </script>
+
+    <script>
+    async function chargerPhotoJapon() {
+        const UNSPLASH_KEY = 'XbrcxUGaVL-uleWREmmRe7LsL99impEMzQWp--mwYVg'; 
+        
+        try {
+            const reponse = await fetch(
+                `https://api.unsplash.com/photos/random?query=japan&orientation=landscape&client_id=${UNSPLASH_KEY}`
+            );
+            const photo = await reponse.json();
+            
+            const hero = document.querySelector('.hero') || document.getElementById('hero-background');
+            hero.style.backgroundImage = `url(${photo.urls.regular})`;
+            
+            let credit = document.querySelector('.unsplash-credit');
+            if (!credit) {
+                credit = document.createElement('div');
+                credit.className = 'unsplash-credit';
+                hero.appendChild(credit);
+            }
+            credit.innerHTML = `Photo by <a href="${photo.links.html}?utm_source=portfolio&utm_medium=referral" target="_blank">${photo.user.name}</a> on <a href="https://unsplash.com/?utm_source=portfolio&utm_medium=referral" target="_blank">Unsplash</a>`;
+            
+        } catch(error) {
+            console.log('Unsplash fallback');
+            document.querySelector('.hero, #hero-background').style.backgroundImage = 
+                "url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3')";
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', chargerPhotoJapon);
+    </script>
+
+</body>
+</html>
